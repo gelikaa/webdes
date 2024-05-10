@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Checkbox & Radio Button</title>
+
+</head>
+
+<style>
+
+body {
+
+  font-family: Arial, sans-serif;
+
+  background-image: url('p6.jpg');
+
+background-size: cover;
+
+  background-position: center;
+
+}
+
+p {
+
+font-family: Arial, sans-serif;
+
+font-size:25px;
+
+font-weight:bold;
+
+color:#F33A6A
+
+}
+
+h1 {
+
+color: #AA336A;
+
+}
+
+input[type="checkbox"], 
+
+input[type="radio"] {
+
+  width: 20px;
+
+  height: 20px;
+
+}
+
+label[for^="c"] {
+
+  font-size:20px; 
+
+  }
+
+label[for^="t"] {
+
+  font-size:20px; 
+
+}
+
+#btn2{
+
+  font-size:20px;
+
+  }
+
+}
+
+</style>
+
+<body>
+
+<h1><center>TᕼE ᗯOᖇᒪᗪ Oᖴ ᗰᑌᔕIᑕ!</h1></center>
+
+<p>Choose your favorite/s genre in music (Check all that apply)</p>
+
+<label for="c1"> <input type="checkbox" name="music" value="K-Pop" id="c1" > K-Pop </label>
+
+<label for="c2"> <input type="checkbox" name="music" value="OPM" id="c2" > OPM </label>
+
+<label for="c3"> <input type="checkbox" name="music" value="R&B" id="c3" > R&B </label>
+
+<label for="c4"> <input type="checkbox" name="music" value="Hip-Hop" id="c4" > Hip-Hop </label>
+
+<label for="c5"> <input type="checkbox" name="music" value="Reggae" id="c5" > Reggae </label>
+
+<br>
+
+<p>How often do you listen to music</p>
+
+<div> <input type="radio" name="times" value="always" id="t1" >
+
+<label for="t1">Always</label></div>
+
+<div> <input type="radio" name="times" value="often" id="t2" >
+
+<label for="t2">Often</label></div>
+
+<div> <input type="radio" name="times" value="sometimes" id="t3" >
+
+<label for="t3">Sometimes</label></div>
+
+<div> <input type="radio" name="times" value="rarely" id="t4" >
+
+<label for="t4">Rarely</label></div>
+
+<div> <input type="radio" name="times" value="not at all" id="t5" >
+
+<label for="t5">Not at All</label></div>
+
+<p>
+
+<button id="btn2">Submit</button>
+
+</p>
+
+<p id="output"></p>
+
+<script>
+
+const btn = document.querySelector('#btn2');
+
+btn.addEventListener('click', (event) => { 
+
+  let checkboxes = document.querySelectorAll('input[name="music"]:checked');
+
+  let values = [];
+
+  checkboxes.forEach((checkbox) => {
+
+    values.push(checkbox.value);
+
+  });
+
+   
+
+  let selectedTimes;
+
+  const radioButtons = document.querySelectorAll('input[name="times"]');
+
+  for (const rb of radioButtons) {
+
+    if (rb.checked) {
+
+      selectedTimes = rb.value;
+
+      break;
+
+    }
+
+  }
+
+   
+
+  const output = document.getElementById('output');
+
+  let message = 'Chosen Genre/s: ' + (values.length > 0 ? values.join(', ') : 'None') + '\n';
+
+  message += 'Listening Frequency: ' + (selectedTimes ? selectedTimes : 'Not selected');
+
+   
+
+  output.innerText = message;
+
+   
+
+  alert(message);
+
+});
+
+</script>
+
+</body>
+
+</html>

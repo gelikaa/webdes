@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Simple House Structure</title>
+<style>
+*
+{
+margin:0;
+padding:0;
+box-sizing: border-box;
+}
+body {
+display:flex;
+justify-content: center;
+align-items:center;
+min-height:100wh;
+overflow:hidden
+}
+ .house {
+ width: 600px;
+ height: 250px;
+ position: relative;
+ background-color: #F3F1F1;
+border-bottom: 10px solid;
+margin-top: 20%
+ }
+ .roof {
+ width: 0;
+ height: 0;
+ border-left: 200px solid transparent;
+ border-right: 200px solid transparent;
+ border-bottom: 80px solid #F4B9FF; 
+ position: absolute;
+ top: -80px;
+ left: 50px;
+}
+.front {
+position:absolute;
+bottom: 0;
+left: -100;
+top: 0%;
+transform: translateX(-50%);
+width: 180px;
+height: 250px;
+background-color:#FFE1EC;
+border-bottom: 10px solid
+}
+.front::before {
+content:'';
+position:absolute;
+left:50%;
+top:-64px;
+width:126px;
+height:126px;
+background-color:#FFE1EC;
+transform: translateX(-50%) rotate(45deg);
+border-top:4px solid black;
+border-left:4px solid black
+}
+ .door {
+ width: 60px;
+ height: 80px;
+ background-color: #131313; 
+ position: absolute;
+ bottom: 0;
+ left: 43%;
+ transform: translateX(-50%);
+border-top-left-radius:60px;
+border-top-right-radius:60px;
+ }
+ .window {
+ width: 70px;
+ height: 80px;
+ background-color: #FFF6A6; 
+ position: absolute;
+ top: 60px;
+ left: 28%;
+ transform: translateX(-50%);
+border-top:5px solid;
+border-bottom:5px solid;
+ }
+ .window::before {
+ content:'';
+position:absolute;
+width: 70px;
+ height: 70px;
+ background-color: #FFF6A6; 
+ position: absolute;
+ top: 0;
+ left: 300%;
+ transform: translateX(-50%);
+border-top:5px solid;
+border-bottom:5px solid;
+ }
+ .front.right {
+ position:absolute;
+bottom: 0;
+left: auto;
+right:90px;
+top: 0%;
+transform: translateX(50%);
+width: 180px;
+height: 250px;
+background-color:#FFE1EC;
+border-bottom: 10px solid
+}
+</style>
+</head>
+<body>
+ <div class="house">
+ <div class="roof"></div>
+<div class="front"></div>
+<div class="front right"></div>
+ <div class="door"></div>
+ <div class="window"></div>
+ </div>
+</body>
+</html>
