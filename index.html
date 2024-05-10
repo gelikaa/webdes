@@ -1,179 +1,119 @@
+
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-<title>Checkbox & Radio Button</title>
-
-</head>
-
+<title>Simple House Structure</title>
 <style>
-
+*
+{
+margin:0;
+padding:0;
+box-sizing: border-box;
+}
 body {
-
-  font-family: Arial, sans-serif;
-
-  background-image: url('p6.jpg');
-
-background-size: cover;
-
-  background-position: center;
-
+display:flex;
+justify-content: center;
+align-items:center;
+min-height:100wh;
+overflow:hidden
 }
-
-p {
-
-font-family: Arial, sans-serif;
-
-font-size:25px;
-
-font-weight:bold;
-
-color:#F33A6A
-
+ .house {
+ width: 600px;
+ height: 250px;
+ position: relative;
+ background-color: #F3F1F1;
+border-bottom: 10px solid;
+margin-top: 20%
+ }
+ .roof {
+ width: 0;
+ height: 0;
+ border-left: 200px solid transparent;
+ border-right: 200px solid transparent;
+ border-bottom: 80px solid #F4B9FF; 
+ position: absolute;
+ top: -80px;
+ left: 50px;
 }
-
-h1 {
-
-color: #AA336A;
-
+.front {
+position:absolute;
+bottom: 0;
+left: -100;
+top: 0%;
+transform: translateX(-50%);
+width: 180px;
+height: 250px;
+background-color:#FFE1EC;
+border-bottom: 10px solid
 }
-
-input[type="checkbox"], 
-
-input[type="radio"] {
-
-  width: 20px;
-
-  height: 20px;
-
+.front::before {
+content:'';
+position:absolute;
+left:50%;
+top:-64px;
+width:126px;
+height:126px;
+background-color:#FFE1EC;
+transform: translateX(-50%) rotate(45deg);
+border-top:4px solid black;
+border-left:4px solid black
 }
-
-label[for^="c"] {
-
-  font-size:20px; 
-
-  }
-
-label[for^="t"] {
-
-  font-size:20px; 
-
+ .door {
+ width: 60px;
+ height: 80px;
+ background-color: #131313; 
+ position: absolute;
+ bottom: 0;
+ left: 43%;
+ transform: translateX(-50%);
+border-top-left-radius:60px;
+border-top-right-radius:60px;
+ }
+ .window {
+ width: 70px;
+ height: 80px;
+ background-color: #FFF6A6; 
+ position: absolute;
+ top: 60px;
+ left: 28%;
+ transform: translateX(-50%);
+border-top:5px solid;
+border-bottom:5px solid;
+ }
+ .window::before {
+ content:'';
+position:absolute;
+width: 70px;
+ height: 70px;
+ background-color: #FFF6A6; 
+ position: absolute;
+ top: 0;
+ left: 300%;
+ transform: translateX(-50%);
+border-top:5px solid;
+border-bottom:5px solid;
+ }
+ .front.right {
+ position:absolute;
+bottom: 0;
+left: auto;
+right:90px;
+top: 0%;
+transform: translateX(50%);
+width: 180px;
+height: 250px;
+background-color:#FFE1EC;
+border-bottom: 10px solid
 }
-
-#btn2{
-
-  font-size:20px;
-
-  }
-
-}
-
 </style>
-
+</head>
 <body>
-
-<h1><center>TᕼE ᗯOᖇᒪᗪ Oᖴ ᗰᑌᔕIᑕ!</h1></center>
-
-<p>Choose your favorite/s genre in music (Check all that apply)</p>
-
-<label for="c1"> <input type="checkbox" name="music" value="K-Pop" id="c1" > K-Pop </label>
-
-<label for="c2"> <input type="checkbox" name="music" value="OPM" id="c2" > OPM </label>
-
-<label for="c3"> <input type="checkbox" name="music" value="R&B" id="c3" > R&B </label>
-
-<label for="c4"> <input type="checkbox" name="music" value="Hip-Hop" id="c4" > Hip-Hop </label>
-
-<label for="c5"> <input type="checkbox" name="music" value="Reggae" id="c5" > Reggae </label>
-
-<br>
-
-<p>How often do you listen to music</p>
-
-<div> <input type="radio" name="times" value="always" id="t1" >
-
-<label for="t1">Always</label></div>
-
-<div> <input type="radio" name="times" value="often" id="t2" >
-
-<label for="t2">Often</label></div>
-
-<div> <input type="radio" name="times" value="sometimes" id="t3" >
-
-<label for="t3">Sometimes</label></div>
-
-<div> <input type="radio" name="times" value="rarely" id="t4" >
-
-<label for="t4">Rarely</label></div>
-
-<div> <input type="radio" name="times" value="not at all" id="t5" >
-
-<label for="t5">Not at All</label></div>
-
-<p>
-
-<button id="btn2">Submit</button>
-
-</p>
-
-<p id="output"></p>
-
-<script>
-
-const btn = document.querySelector('#btn2');
-
-btn.addEventListener('click', (event) => { 
-
-  let checkboxes = document.querySelectorAll('input[name="music"]:checked');
-
-  let values = [];
-
-  checkboxes.forEach((checkbox) => {
-
-    values.push(checkbox.value);
-
-  });
-
-   
-
-  let selectedTimes;
-
-  const radioButtons = document.querySelectorAll('input[name="times"]');
-
-  for (const rb of radioButtons) {
-
-    if (rb.checked) {
-
-      selectedTimes = rb.value;
-
-      break;
-
-    }
-
-  }
-
-   
-
-  const output = document.getElementById('output');
-
-  let message = 'Chosen Genre/s: ' + (values.length > 0 ? values.join(', ') : 'None') + '\n';
-
-  message += 'Listening Frequency: ' + (selectedTimes ? selectedTimes : 'Not selected');
-
-   
-
-  output.innerText = message;
-
-   
-
-  alert(message);
-
-});
-
-</script>
-
+ <div class="house">
+ <div class="roof"></div>
+<div class="front"></div>
+<div class="front right"></div>
+ <div class="door"></div>
+ <div class="window"></div>
+ </div>
 </body>
-
 </html>
